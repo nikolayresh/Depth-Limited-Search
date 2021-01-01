@@ -26,7 +26,6 @@ namespace UninformedSearch.Task
                     Console.WriteLine();
                 }
 
-
                 Console.WriteLine("Steps:");
                 int i = 0;
                 foreach (var action in solution.Actions)

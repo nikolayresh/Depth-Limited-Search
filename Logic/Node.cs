@@ -42,7 +42,7 @@ namespace UninformedSearch.Task.Logic
             get;
         }
 
-        internal bool IsRoot()
+        public bool IsRoot()
         {
             return (Parent is null);
         }
