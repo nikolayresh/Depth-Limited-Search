@@ -63,7 +63,7 @@ namespace UninformedSearch.Task
             return 
                 pos >= 0 &&
                 pos < SlotsCount &&
-                Slots[pos] != null &&
+                Slots[pos].GetBall() != null &&
                 Slots[pos].GetBall().Color == Color.Black;
         }
 
@@ -72,7 +72,7 @@ namespace UninformedSearch.Task
             return 
                 pos >= 0 &&
                 pos < SlotsCount &&
-                Slots[pos] != null &&
+                Slots[pos].GetBall() != null &&
                 Slots[pos].GetBall().Color == Color.White;
         }
 
