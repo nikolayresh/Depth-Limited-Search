@@ -10,7 +10,8 @@ namespace UninformedSearch.Task
             Console.ForegroundColor = ConsoleColor.Green;
 
             var maxDepth = 19;
-            var solution = SearchDLS.Solve(new Problem(), maxDepth);
+            var problem = new Problem();
+            var solution = SearchDLS.Solve(problem, maxDepth);
 
             Console.WriteLine($"Depth Limit: {maxDepth}");
             Console.WriteLine($"Is Solved: {solution.Solved}");
@@ -19,15 +20,19 @@ namespace UninformedSearch.Task
             if (solution.Solved)
             {
                 Console.WriteLine();
+                Console.WriteLine("Initial State:");
+                Console.WriteLine(problem.GetInitialState());
+
                 if (solution.FinalState != null)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Final State:");
                     Console.WriteLine(solution.FinalState);
                     Console.WriteLine();
                 }
 
-                Console.WriteLine("Steps:");
                 int i = 0;
+                Console.WriteLine("Steps to Solution:");
                 foreach (var action in solution.Actions)
                 {
                     Console.WriteLine($"({++i}) {action.CommandText}");

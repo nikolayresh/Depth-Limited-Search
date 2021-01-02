@@ -33,7 +33,7 @@ namespace UninformedSearch.Task.Logic
                 var sb = new StringBuilder();
                 sb.Append($"Take a [{BallToRelocate.Name}] ball ")
                     .Append($"at slot {SourcePosition + 1} ")
-                    .Append($"and place it {DirectionText(Direction)} ")
+                    .Append($"and put it {DirectionText(Direction)} ")
                     .Append($"into slot {TargetPosition + 1}");
 
                 return sb.ToString();
