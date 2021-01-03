@@ -14,8 +14,8 @@ namespace UninformedSearch.Task
             var solution = SearchDLS.Solve(problem, maxDepth);
 
             Console.WriteLine($"Depth Limit: {maxDepth}");
-            Console.WriteLine($"Is Solved: {solution.Solved}");
-            Console.WriteLine($"Cut Off: {solution.CutOff}");
+            Console.WriteLine($"Has Solution: {solution.Solved}");
+            Console.WriteLine($"Is Cut-Off: {solution.CutOff}");
 
             if (solution.Solved)
             {

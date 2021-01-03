@@ -20,9 +20,12 @@ namespace UninformedSearch.Task
 
         public bool IsEmpty()
         {
-            return (_ball is null);
+            return (_ball == null);
         }
 
+        /// <summary>
+        /// Marks this slot as empty
+        /// </summary>
         public void SetEmpty()
         {
             _ball = null;
@@ -40,7 +43,8 @@ namespace UninformedSearch.Task
                 return true;
             }
 
-            var other = obj as Slot;
+            var other = (Slot) obj;
+
             return Equals(_ball, other.GetBall());
         }
 

@@ -42,9 +42,12 @@ namespace UninformedSearch.Task.Logic
             get;
         }
 
+        /// <summary>
+        /// Returns a boolean value whether this node is the root node (that has no parent node)
+        /// </summary>
         public bool IsRoot()
         {
-            return (Parent is null);
+            return (Parent == null);
         }
 
         public ReadOnlyCollection<Action> GetActionsChain()
@@ -65,18 +68,19 @@ namespace UninformedSearch.Task.Logic
             }
 
             chain.RemoveAll(x => x is null);
+
             return chain.AsReadOnly();
         }
 
         public int GetDepth()
         {
             var depth = 0;
-            var parent = Parent;
+            var current = Parent;
 
-            while (parent != null)
+            while (current != null)
             {
                 depth++;
-                parent = parent.Parent;
+                current = current.Parent;
             }
 
             return depth;

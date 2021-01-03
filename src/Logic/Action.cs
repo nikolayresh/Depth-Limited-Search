@@ -22,7 +22,7 @@ namespace UninformedSearch.Task.Logic
         public int TargetPosition { get; set; }
 
         /// <summary>
-        /// Direction of where to relocate a ball on board
+        /// Direction of where to relocate a ball within the board
         /// </summary>
         public MoveDirection Direction { get; set; }
 

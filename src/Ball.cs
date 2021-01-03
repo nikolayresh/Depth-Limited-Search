@@ -49,6 +49,7 @@ namespace UninformedSearch.Task
             }
 
             var other = (Ball) obj;
+
             return Id == other.Id && Color == other.Color;
         }
 

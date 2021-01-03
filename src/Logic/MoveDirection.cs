@@ -16,12 +16,12 @@
         ToRight,
 
         /// <summary>
-        /// Move a ball to the left with a jump over neighbor ball
+        /// Move a ball to the left with a jump over a neighbor ball
         /// </summary>
         ToLeftWithJump,
 
         /// <summary>
-        /// Move a ball to the right with a jump over neighbor ball
+        /// Move a ball to the right with a jump over a neighbor ball
         /// </summary>
         ToRightWithJump
     }
