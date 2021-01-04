@@ -38,7 +38,7 @@ namespace UninformedSearch.Task.Logic
                 {
                     if (nextNode.GetDepth() <= maxDepth && goalPredicate(nextNode.State))
                     {
-                        // return node immediately
+                        // return result immediately
                         return new SolutionResult(true, false, nextNode.GetActionsChain(), nextNode.State);
                     }
 

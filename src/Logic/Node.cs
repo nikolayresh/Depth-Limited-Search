@@ -35,7 +35,7 @@ namespace UninformedSearch.Task.Logic
         }
 
         /// <summary>
-        /// Returns action
+        /// Returns action to apply
         /// </summary>
         public Action Action
         {
@@ -43,13 +43,16 @@ namespace UninformedSearch.Task.Logic
         }
 
         /// <summary>
-        /// Returns a boolean value whether this node is the root node (that has no parent node)
+        /// Returns a boolean value whether this node is the root node (has no parent node)
         /// </summary>
         public bool IsRoot()
         {
             return Parent == null;
         }
 
+        /// <summary>
+        /// Gets sequence of actions from this node up to the root node
+        /// </summary>
         public ReadOnlyCollection<Action> GetActionsChain()
         {
             var chain = new List<Action>();
@@ -72,6 +75,9 @@ namespace UninformedSearch.Task.Logic
             return chain.AsReadOnly();
         }
 
+        /// <summary>
+        /// Gets depth of this node
+        /// </summary>
         public int GetDepth()
         {
             var depth = 0;

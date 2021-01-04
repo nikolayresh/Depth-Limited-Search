@@ -11,29 +11,29 @@ namespace UninformedSearch.Task
 
             var maxDepth = 19;
             var problem = new Problem();
-            var solution = SearchDLS.Solve(problem, maxDepth);
+            var solutionResult = SearchDLS.Solve(problem, maxDepth);
 
             Console.WriteLine($"Depth Limit: {maxDepth}");
-            Console.WriteLine($"Has Solution: {solution.HasSolution}");
-            Console.WriteLine($"Is Cut-Off: {solution.IsCutOff}");
+            Console.WriteLine($"Has Solution: {solutionResult.HasSolution}");
+            Console.WriteLine($"Is Cut-Off: {solutionResult.IsCutOff}");
 
-            if (solution.HasSolution)
+            if (solutionResult.HasSolution)
             {
                 Console.WriteLine();
                 Console.WriteLine("Initial State:");
                 Console.WriteLine(problem.GetInitialState());
 
-                if (solution.FinalState != null)
+                if (solutionResult.FinalState != null)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Final State:");
-                    Console.WriteLine(solution.FinalState);
+                    Console.WriteLine(solutionResult.FinalState);
                     Console.WriteLine();
                 }
 
                 int i = 0;
                 Console.WriteLine("Steps to Solution:");
-                foreach (var action in solution.Actions)
+                foreach (var action in solutionResult.Actions)
                 {
                     Console.WriteLine($"({++i}) {action.CommandText}");
                 }
