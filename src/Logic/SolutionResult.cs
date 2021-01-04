@@ -7,7 +7,7 @@ namespace UninformedSearch.Task.Logic
     /// </summary>
     public sealed class SolutionResult
     {
-        public SolutionResult(bool hasSolution, bool isCutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
+        public SolutionResult(bool? hasSolution, bool isCutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
         {
             HasSolution = hasSolution;
             IsCutOff = isCutOff;
@@ -18,7 +18,7 @@ namespace UninformedSearch.Task.Logic
         /// <summary>
         /// Returns a boolean value whether a problem has solution
         /// </summary>
-        public bool HasSolution
+        public bool? HasSolution
         {
             get;
         }

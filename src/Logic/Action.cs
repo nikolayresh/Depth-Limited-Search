@@ -42,7 +42,7 @@ namespace UninformedSearch.Task.Logic
 
         public override int GetHashCode()
         {
-            return HashUtil.GetHashCode(BallToRelocate, SourcePosition, TargetPosition, Direction);
+            return HashUtility.GetHashCode(BallToRelocate, SourcePosition, TargetPosition, Direction);
         }
 
         public override bool Equals(object obj)

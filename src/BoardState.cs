@@ -4,7 +4,7 @@ using UninformedSearch.Task.Logic;
 namespace UninformedSearch.Task
 {
     /// <summary>
-    /// State of the board with balls
+    /// State of the board with balls on it
     /// </summary>
     public sealed class BoardState
     {
@@ -26,6 +26,9 @@ namespace UninformedSearch.Task
             }
         }
 
+        /// <summary>
+        /// Returns slots of the board. One of the slots is always empty
+        /// </summary>
         public Slot[] Slots
         {
             get;

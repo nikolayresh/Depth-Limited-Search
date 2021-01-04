@@ -55,7 +55,7 @@ namespace UninformedSearch.Task
 
         public override int GetHashCode()
         {
-            return HashUtil.GetHashCode(Id, Color);
+            return HashUtility.GetHashCode(Id, Color);
         }
 
         /// <summary>

@@ -3,7 +3,7 @@
     /// <summary>
     /// Utility that calculates hash code of specified items
     /// </summary>
-    public static class HashUtil
+    public static class HashUtility
     {
         private const int SeedPrime = 17;
         private const int NextPrime = 41;

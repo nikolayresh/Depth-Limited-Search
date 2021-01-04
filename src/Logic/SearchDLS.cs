@@ -10,9 +10,8 @@ namespace UninformedSearch.Task.Logic
         public static SolutionResult Solve(Problem problem, int maxDepth)
         {
             var root = new Node(problem.GetInitialState());
-            var goalPredicate = problem.GetGoalPredicate();
 
-            if (goalPredicate(root.State))
+            if (problem.IsGoalState(root.State))
             {
                 return new SolutionResult(true, false, root.GetActionsChain());
             }
@@ -26,17 +25,19 @@ namespace UninformedSearch.Task.Logic
 
                 if (node.GetDepth() > maxDepth)
                 {
-                    return new SolutionResult(false, true);
+                    // result is unknown
+                    // as level of depth is low
+                    return new SolutionResult(null, true);
                 }
 
-                if (goalPredicate(node.State))
+                if (problem.IsGoalState(node.State))
                 {
                     return new SolutionResult(true, false, node.GetActionsChain(), node.State);
                 }
 
                 foreach (var nextNode in NodeExpander.Expand(node, problem))
                 {
-                    if (nextNode.GetDepth() <= maxDepth && goalPredicate(nextNode.State))
+                    if (nextNode.GetDepth() <= maxDepth && problem.IsGoalState(nextNode.State))
                     {
                         // return result immediately
                         return new SolutionResult(true, false, nextNode.GetActionsChain(), nextNode.State);

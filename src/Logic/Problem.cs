@@ -8,7 +8,6 @@ namespace UninformedSearch.Task.Logic
         private static readonly BoardState GoalState;
 
         private readonly BoardState _initialState;
-        private readonly Predicate<BoardState> _goalPredicate;
         private readonly Func<BoardState, HashSet<Action>> _actionsFunction;
         private readonly Func<BoardState, Action, BoardState> _resultFunction;
 
@@ -38,7 +37,7 @@ namespace UninformedSearch.Task.Logic
         public Problem()
         {
             _initialState = new BoardState().Initialize();
-            _goalPredicate = state => Equals(state, GoalState);
+
             _actionsFunction = state =>
             {
                 var actions = new HashSet<Action>();
@@ -102,6 +101,7 @@ namespace UninformedSearch.Task.Logic
 
                 return actions;
             };
+
             _resultFunction = (state, action) =>
             {
                 var nextState = new BoardState(state);
@@ -110,14 +110,22 @@ namespace UninformedSearch.Task.Logic
             };
         }
 
+        /// <summary>
+        /// Returns initial state of a problem,
+        /// from which search begins 
+        /// </summary>
         public BoardState GetInitialState()
         {
             return _initialState;
         }
 
-        public Predicate<BoardState> GetGoalPredicate()
+        /// <summary>
+        /// Returns a boolean value whether specified state
+        /// equals to the goal state of problem
+        /// </summary>
+        public bool IsGoalState(BoardState state)
         {
-            return _goalPredicate;
+            return Equals(state, GoalState);
         }
 
         public Func<BoardState,HashSet<Action>> GetActionsFunction()
