@@ -88,7 +88,7 @@ namespace UninformedSearch.Task.Logic
                     return "to the right with a jump";
 
                 default:
-                    return null;
+                    return string.Empty;
             }
         } 
     }

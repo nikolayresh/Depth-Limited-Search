@@ -1,7 +1,7 @@
 ﻿namespace UninformedSearch.Task.Logic
 {
     /// <summary>
-    /// Type of movement
+    /// Direction of where to relocate a ball within the board
     /// </summary>
     public enum MoveDirection
     {

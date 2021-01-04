@@ -55,8 +55,8 @@ namespace UninformedSearch.Task
         }
 
         /// <summary>
-        /// Returns a boolean value whether a slot at specified position
-        /// contains a BLACK ball
+        /// Returns a boolean value whether a slot
+        /// at specified position contains a BLACK ball
         /// </summary>
         public bool IsBlackBallAt(int pos)
         {
@@ -67,6 +67,10 @@ namespace UninformedSearch.Task
                 Slots[pos].GetBall().Color == Color.Black;
         }
 
+        /// <summary>
+        /// Returns a boolean value whether a slot
+        /// at specified position contains a WHITE ball
+        /// </summary>
         public bool IsWhiteBallAt(int pos)
         {
             return 
@@ -88,9 +92,9 @@ namespace UninformedSearch.Task
                 return true;
             }
 
-            var other = (BoardState) obj;
+            var otherState = (BoardState) obj;
 
-            if (Slots.Length != other.Slots.Length)
+            if (Slots.Length != otherState.Slots.Length)
             {
                 return false;
             }
@@ -98,7 +102,7 @@ namespace UninformedSearch.Task
             for (int i = 0; i < SlotsCount; i++)
             {
                 var thisSlot = Slots[i];
-                var otherSlot = other.Slots[i];
+                var otherSlot = otherState.Slots[i];
 
                 if (!Equals(thisSlot, otherSlot))
                 {

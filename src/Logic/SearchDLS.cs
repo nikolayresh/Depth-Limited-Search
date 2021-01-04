@@ -7,14 +7,14 @@ namespace UninformedSearch.Task.Logic
         /// <summary>
         /// Solves a problem using Depth Limited Search algorithm
         /// </summary>
-        public static Solution Solve(Problem problem, int maxDepth)
+        public static SolutionResult Solve(Problem problem, int maxDepth)
         {
             var root = new Node(problem.GetInitialState());
             var goalPredicate = problem.GetGoalPredicate();
 
             if (goalPredicate(root.State))
             {
-                return new Solution(true, false, root.GetActionsChain());
+                return new SolutionResult(true, false, root.GetActionsChain());
             }
 
             var stack = new Stack<Node>();
@@ -26,12 +26,12 @@ namespace UninformedSearch.Task.Logic
 
                 if (node.GetDepth() > maxDepth)
                 {
-                    return new Solution(false, true);
+                    return new SolutionResult(false, true);
                 }
 
                 if (goalPredicate(node.State))
                 {
-                    return new Solution(true, false, node.GetActionsChain(), node.State);
+                    return new SolutionResult(true, false, node.GetActionsChain(), node.State);
                 }
 
                 foreach (var nextNode in NodeExpander.Expand(node, problem))
@@ -39,7 +39,7 @@ namespace UninformedSearch.Task.Logic
                     if (nextNode.GetDepth() <= maxDepth && goalPredicate(nextNode.State))
                     {
                         // return node immediately
-                        return new Solution(true, false, nextNode.GetActionsChain(), nextNode.State);
+                        return new SolutionResult(true, false, nextNode.GetActionsChain(), nextNode.State);
                     }
 
                     stack.Push(nextNode);
@@ -47,7 +47,7 @@ namespace UninformedSearch.Task.Logic
             }
 
             // FAILURE, solution was not found
-            return new Solution(false, false);
+            return new SolutionResult(false, false);
         }
     }
 }

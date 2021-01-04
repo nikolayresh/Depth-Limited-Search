@@ -19,7 +19,7 @@ namespace UninformedSearch.Task.Logic
         }
 
         /// <summary>
-        /// Returns state of a board
+        /// Returns state of the board
         /// </summary>
         public BoardState State
         {
@@ -47,7 +47,7 @@ namespace UninformedSearch.Task.Logic
         /// </summary>
         public bool IsRoot()
         {
-            return (Parent == null);
+            return Parent == null;
         }
 
         public ReadOnlyCollection<Action> GetActionsChain()
@@ -75,12 +75,12 @@ namespace UninformedSearch.Task.Logic
         public int GetDepth()
         {
             var depth = 0;
-            var current = Parent;
+            var node = Parent;
 
-            while (current != null)
+            while (node != null)
             {
                 depth++;
-                current = current.Parent;
+                node = node.Parent;
             }
 
             return depth;

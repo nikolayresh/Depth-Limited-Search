@@ -1,26 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 
 namespace UninformedSearch.Task.Logic
 {
     /// <summary>
     /// Class that defines solution's result of a problem
     /// </summary>
-    public sealed class Solution
+    public sealed class SolutionResult
     {
-        public Solution(bool solved, bool cutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
+        public SolutionResult(bool hasSolution, bool isCutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
         {
-            Solved = solved;
-            CutOff = cutOff;
+            HasSolution = hasSolution;
+            IsCutOff = isCutOff;
             Actions = actions;
             FinalState = finalState;
         }
 
         /// <summary>
-        /// Returns a boolean value whether a problem was solved
+        /// Returns a boolean value whether a problem has solution
         /// </summary>
-        public bool Solved
+        public bool HasSolution
         {
             get;
         }
@@ -29,7 +27,7 @@ namespace UninformedSearch.Task.Logic
         /// Returns a boolean value whether solution failed
         /// due to a low depth limit of search
         /// </summary>
-        public bool CutOff
+        public bool IsCutOff
         {
             get;
         }
@@ -43,7 +41,7 @@ namespace UninformedSearch.Task.Logic
         }
 
         /// <summary>
-        /// Returns final state of a board
+        /// Returns final state of the board
         /// </summary>
         public BoardState FinalState
         {
