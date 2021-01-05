@@ -38,7 +38,7 @@ namespace UninformedSearch.Task
 
         public override bool Equals(object obj)
         {
-            if (obj is null || obj.GetType() != GetType())
+            if (obj == null || obj.GetType() != GetType())
             {
                 return false;
             }
@@ -48,9 +48,9 @@ namespace UninformedSearch.Task
                 return true;
             }
 
-            var other = (Ball) obj;
+            var otherBall = (Ball) obj;
 
-            return Id == other.Id && Color == other.Color;
+            return Id == otherBall.Id && Color == otherBall.Color;
         }
 
         public override int GetHashCode()
@@ -71,7 +71,7 @@ namespace UninformedSearch.Task
         {
             get
             {
-                return $"{Color:G} #{Id}";
+                return Name;
             }
         }
     }

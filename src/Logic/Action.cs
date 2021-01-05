@@ -7,9 +7,9 @@ namespace UninformedSearch.Task.Logic
     public sealed class Action
     {
         /// <summary>
-        /// A ball to move from source position to target position on board
+        /// A ball to move from source position to target position within the board
         /// </summary>
-        public Ball BallToRelocate { get; set; }
+        public Ball BallToMove { get; set; }
 
         /// <summary>
         /// Position of a ball on board before it's moved 
@@ -26,12 +26,15 @@ namespace UninformedSearch.Task.Logic
         /// </summary>
         public MoveDirection Direction { get; set; }
 
+        /// <summary>
+        /// Returns textual description of this action
+        /// </summary>
         public string CommandText
         {
             get
             {
                 var sb = new StringBuilder();
-                sb.Append($"Take a [{BallToRelocate.Name}] ball ")
+                sb.Append($"Take a [{BallToMove.Name}] ball ")
                     .Append($"at slot {SourcePosition + 1} ")
                     .Append($"and put it {DirectionText(Direction)} ")
                     .Append($"into slot {TargetPosition + 1}");
@@ -42,12 +45,12 @@ namespace UninformedSearch.Task.Logic
 
         public override int GetHashCode()
         {
-            return HashUtility.GetHashCode(BallToRelocate, SourcePosition, TargetPosition, Direction);
+            return HashUtility.GetHashCode(BallToMove, SourcePosition, TargetPosition, Direction);
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is null || obj.GetType() != GetType())
+            if (obj == null || obj.GetType() != GetType())
             {
                 return false;
             }
@@ -59,7 +62,7 @@ namespace UninformedSearch.Task.Logic
 
             var other = (Action) obj;
 
-            return Equals(BallToRelocate, other.BallToRelocate) &&
+            return Equals(BallToMove, other.BallToMove) &&
                    SourcePosition == other.SourcePosition &&
                    TargetPosition == other.TargetPosition &&
                    Direction == other.Direction;

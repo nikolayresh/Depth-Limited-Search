@@ -59,7 +59,7 @@ namespace UninformedSearch.Task.Logic
                 {
                     actions.Add(new Action
                     {
-                        BallToRelocate = state.Slots[emptyPos - 1].GetBall(),
+                        BallToMove = state.Slots[emptyPos - 1].GetBall(),
                         Direction = MoveDirection.ToRight,
                         SourcePosition = emptyPos - 1,
                         TargetPosition = emptyPos
@@ -70,7 +70,7 @@ namespace UninformedSearch.Task.Logic
                 {
                     actions.Add(new Action
                     {
-                        BallToRelocate = state.Slots[emptyPos - 2].GetBall(),
+                        BallToMove = state.Slots[emptyPos - 2].GetBall(),
                         Direction = MoveDirection.ToRightWithJump,
                         SourcePosition = emptyPos - 2,
                         TargetPosition = emptyPos
@@ -81,7 +81,7 @@ namespace UninformedSearch.Task.Logic
                 {
                     actions.Add(new Action
                     {
-                        BallToRelocate = state.Slots[emptyPos + 1].GetBall(),
+                        BallToMove = state.Slots[emptyPos + 1].GetBall(),
                         Direction = MoveDirection.ToLeft,
                         SourcePosition = emptyPos + 1,
                         TargetPosition = emptyPos
@@ -92,7 +92,7 @@ namespace UninformedSearch.Task.Logic
                 {
                     actions.Add(new Action
                     {
-                        BallToRelocate = state.Slots[emptyPos + 2].GetBall(),
+                        BallToMove = state.Slots[emptyPos + 2].GetBall(),
                         Direction = MoveDirection.ToLeftWithJump,
                         SourcePosition = emptyPos + 2,
                         TargetPosition = emptyPos
@@ -128,6 +128,9 @@ namespace UninformedSearch.Task.Logic
             return Equals(state, GoalState);
         }
 
+        /// <summary>
+        /// Returns a delegate function that returns a new set of actions for each specified state
+        /// </summary>
         public Func<BoardState,HashSet<Action>> GetActionsFunction()
         {
             return _actionsFunction;

@@ -7,7 +7,7 @@ namespace UninformedSearch.Task.Logic
         /// <summary>
         /// Solves a problem using Depth Limited Search algorithm
         /// </summary>
-        public static SolutionResult Solve(Problem problem, int maxDepth)
+        public static SolutionResult ExecuteSearch(Problem problem, int maxDepth)
         {
             var root = new Node(problem.GetInitialState());
 
@@ -26,7 +26,7 @@ namespace UninformedSearch.Task.Logic
                 if (node.GetDepth() > maxDepth)
                 {
                     // result is unknown
-                    // as level of depth is low
+                    // as maximal level of depth is low
                     return new SolutionResult(null, true);
                 }
 

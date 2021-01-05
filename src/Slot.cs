@@ -8,19 +8,28 @@ namespace UninformedSearch.Task
     {
         private Ball _ball;
 
+        /// <summary>
+        /// Returns a ball located in this slot
+        /// </summary>
         public Ball GetBall()
         {
             return _ball;
         }
 
+        /// <summary>
+        /// Puts a ball into this slot
+        /// </summary>
         public void SetBall(Ball ball)
         {
             _ball = ball;
         }
 
+        /// <summary>
+        /// Returns a boolean value whether this slot is empty
+        /// </summary>
         public bool IsEmpty()
         {
-            return (_ball == null);
+            return _ball == null;
         }
 
         /// <summary>
@@ -33,7 +42,7 @@ namespace UninformedSearch.Task
 
         public override bool Equals(object obj)
         {
-            if (obj is null || obj.GetType() != GetType())
+            if (obj == null || obj.GetType() != GetType())
             {
                 return false;
             }
@@ -43,9 +52,9 @@ namespace UninformedSearch.Task
                 return true;
             }
 
-            var other = (Slot) obj;
+            var otherSlot = (Slot) obj;
 
-            return Equals(_ball, other.GetBall());
+            return Equals(_ball, otherSlot._ball);
         }
 
         public Slot Clone()
@@ -66,6 +75,7 @@ namespace UninformedSearch.Task
             get
             {
                 var sb = new StringBuilder();
+
                 sb.Append("Ball: [");
                 sb.Append(_ball != null ? _ball.ToString() : "empty");
                 sb.Append("]");

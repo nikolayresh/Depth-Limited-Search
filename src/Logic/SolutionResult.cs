@@ -16,7 +16,8 @@ namespace UninformedSearch.Task.Logic
         }
 
         /// <summary>
-        /// Returns a boolean value whether a problem has solution
+        /// Returns a boolean value whether a problem has solution.
+        /// If the returned value is <code>null</code>, then it means solution is unknown. 
         /// </summary>
         public bool? HasSolution
         {

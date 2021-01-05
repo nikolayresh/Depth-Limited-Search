@@ -11,13 +11,13 @@ namespace UninformedSearch.Task
 
             const int maxDepth = 19;
             var problem = new Problem();
-            var sr = SearchDLS.Solve(problem, maxDepth);
+            var sr = SearchDLS.ExecuteSearch(problem, maxDepth);
 
             Console.WriteLine($"Depth Limit: {maxDepth}");
             Console.WriteLine($"Has Solution: {HasSolutionText(sr.HasSolution)}");
             Console.WriteLine($"Is Cut-Off: {sr.IsCutOff}");
 
-            if (sr.HasSolution.HasValue && sr.HasSolution.Value)
+            if (sr.HasSolution != null && sr.HasSolution.Value)
             {
                 Console.WriteLine();
                 Console.WriteLine("Initial State:");
@@ -31,13 +31,15 @@ namespace UninformedSearch.Task
                     Console.WriteLine();
                 }
 
-                int i = 0;
+                var i = 0;
                 Console.WriteLine("Steps to Solution:");
                 foreach (var action in sr.Actions)
                 {
                     Console.WriteLine($"({++i}) {action.CommandText}");
                 }
             }
+
+            Console.ReadLine();
         }
 
         private static string HasSolutionText(bool? flag)
