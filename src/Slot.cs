@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace UninformedSearch.Task
@@ -17,6 +19,23 @@ namespace UninformedSearch.Task
         }
 
         /// <summary>
+        /// Takes out a ball from this slot and returns it
+        /// </summary>
+        public Ball PopBall()
+        {
+            var ret = _ball;
+
+            if (ret != null)
+            {
+                _ball = null;
+                return ret;
+            }
+
+            throw new InvalidOperationException(
+                "Slot is empty. Cannot pop a ball");
+        }
+
+        /// <summary>
         /// Puts a ball into this slot
         /// </summary>
         public void SetBall(Ball ball)
@@ -30,14 +49,6 @@ namespace UninformedSearch.Task
         public bool IsEmpty()
         {
             return _ball == null;
-        }
-
-        /// <summary>
-        /// Marks this slot as empty
-        /// </summary>
-        public void SetEmpty()
-        {
-            _ball = null;
         }
 
         public override bool Equals(object obj)

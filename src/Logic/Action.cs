@@ -34,6 +34,7 @@ namespace UninformedSearch.Task.Logic
             get
             {
                 var sb = new StringBuilder();
+
                 sb.Append($"Take a [{BallToMove.Name}] ball ")
                     .Append($"at slot {SourcePosition + 1} ")
                     .Append($"and put it {DirectionText(Direction)} ")
@@ -41,11 +42,6 @@ namespace UninformedSearch.Task.Logic
 
                 return sb.ToString();
             }
-        }
-
-        public override int GetHashCode()
-        {
-            return HashUtility.GetHashCode(BallToMove, SourcePosition, TargetPosition, Direction);
         }
 
         public override bool Equals(object obj)
@@ -60,12 +56,29 @@ namespace UninformedSearch.Task.Logic
                 return true;
             }
 
-            var other = (Action) obj;
+            var otherAction = (Action) obj;
 
-            return Equals(BallToMove, other.BallToMove) &&
-                   SourcePosition == other.SourcePosition &&
-                   TargetPosition == other.TargetPosition &&
-                   Direction == other.Direction;
+            return Equals(BallToMove, otherAction.BallToMove) &&
+                   SourcePosition == otherAction.SourcePosition &&
+                   TargetPosition == otherAction.TargetPosition &&
+                   Direction == otherAction.Direction;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashUtility.GetHashCode(BallToMove, SourcePosition, TargetPosition, Direction);
+        }
+
+        private static string DirectionText(MoveDirection direction)
+        {
+            return direction switch
+            {
+                MoveDirection.ToLeft => "to the left",
+                MoveDirection.ToLeftWithJump => "to the left with a jump",
+                MoveDirection.ToRight => "to the right",
+                MoveDirection.ToRightWithJump => "to the right with a jump",
+                _ => string.Empty,
+            };
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -76,23 +89,5 @@ namespace UninformedSearch.Task.Logic
                 return CommandText;
             }
         }
-
-        private static string DirectionText(MoveDirection direction)
-        {
-            switch (direction)
-            {
-                case MoveDirection.ToLeft:
-                    return "to the left";
-                case MoveDirection.ToLeftWithJump:
-                    return "to the left with a jump";
-                case MoveDirection.ToRight:
-                    return "to the right";
-                case MoveDirection.ToRightWithJump:
-                    return "to the right with a jump";
-
-                default:
-                    return string.Empty;
-            }
-        } 
     }
 }

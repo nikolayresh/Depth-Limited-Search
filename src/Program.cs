@@ -31,11 +31,11 @@ namespace UninformedSearch.Task
                     Console.WriteLine();
                 }
 
-                var i = 0;
+                var step = 0;
                 Console.WriteLine("Steps to Solution:");
                 foreach (var action in sr.Actions)
                 {
-                    Console.WriteLine($"({++i}) {action.CommandText}");
+                    Console.WriteLine($"({++step:00}) {action.CommandText}");
                 }
             }
 

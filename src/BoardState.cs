@@ -121,9 +121,8 @@ namespace UninformedSearch.Task
         /// </summary>
         public void MoveBall(Action action)
         {
-            var ball = Slots[action.SourcePosition].GetBall();
+            var ball = Slots[action.SourcePosition].PopBall();
             Slots[action.TargetPosition].SetBall(ball);
-            Slots[action.SourcePosition].SetEmpty();
         }
 
         public override string ToString()
