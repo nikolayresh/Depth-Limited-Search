@@ -1,7 +1,7 @@
 ﻿namespace UninformedSearch.Task
 {
     /// <summary>
-    /// Color of a ball on board
+    /// Color of a ball on the board
     /// </summary>
     public enum Color
     {

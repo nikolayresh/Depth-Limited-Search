@@ -7,9 +7,9 @@ namespace UninformedSearch.Task.Logic
     /// </summary>
     public static class NodeExpander
     {
-        public static List<Node> Expand(Node node, Problem problem)
+        public static HashSet<Node> Expand(Node node, Problem problem)
         {
-            var successors = new List<Node>();
+            var successors = new HashSet<Node>();
             var actionsFn = problem.GetActionsFunction();
             var resultFn = problem.GetResultFunction();
 

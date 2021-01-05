@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace UninformedSearch.Task
@@ -65,7 +64,7 @@ namespace UninformedSearch.Task
 
             var otherSlot = (Slot) obj;
 
-            return Equals(_ball, otherSlot._ball);
+            return Equals(GetBall(), otherSlot.GetBall());
         }
 
         public Slot Clone()
@@ -88,7 +87,7 @@ namespace UninformedSearch.Task
                 var sb = new StringBuilder();
 
                 sb.Append("Ball: [");
-                sb.Append(_ball != null ? _ball.ToString() : "empty");
+                sb.Append(_ball != null ? _ball.ToString() : "<empty>");
                 sb.Append("]");
 
                 return sb.ToString();

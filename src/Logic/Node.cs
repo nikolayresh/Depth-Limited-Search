@@ -3,6 +3,9 @@ using System.Collections.ObjectModel;
 
 namespace UninformedSearch.Task.Logic
 {
+    /// <summary>
+    /// Class that defines a single node with its state
+    /// </summary>
     public sealed class Node
     {
         public Node(BoardState state)
@@ -70,8 +73,7 @@ namespace UninformedSearch.Task.Logic
                 current = current.Parent;
             }
 
-            chain.RemoveAll(x => x is null);
-
+            chain.RemoveAll(x => x == null);
             return chain.AsReadOnly();
         }
 
@@ -90,6 +92,31 @@ namespace UninformedSearch.Task.Logic
             }
 
             return depth;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            var otherNode = (Node) obj;
+
+            return
+                Equals(State, otherNode.State) &&
+                Equals(Parent, otherNode.Parent) &&
+                Equals(Action, otherNode.Action);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashUtility.GetHashCode(State, Parent, Action);
         }
     }
 }

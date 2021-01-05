@@ -3,11 +3,11 @@
 namespace UninformedSearch.Task.Logic
 {
     /// <summary>
-    /// Class that defines solution's result of a problem
+    /// Class that defines search result
     /// </summary>
-    public sealed class SolutionResult
+    public sealed class SearchResult
     {
-        public SolutionResult(bool? hasSolution, bool isCutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
+        public SearchResult(bool? hasSolution, bool isCutOff, ReadOnlyCollection<Action> actions = null, BoardState finalState = null)
         {
             HasSolution = hasSolution;
             IsCutOff = isCutOff;

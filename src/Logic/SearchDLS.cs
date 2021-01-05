@@ -7,13 +7,13 @@ namespace UninformedSearch.Task.Logic
         /// <summary>
         /// Solves a problem using Depth Limited Search algorithm
         /// </summary>
-        public static SolutionResult ExecuteSearch(Problem problem, int maxDepth)
+        public static SearchResult ExecuteSearch(Problem problem, int maxDepth)
         {
             var root = new Node(problem.GetInitialState());
 
             if (problem.IsGoalState(root.State))
             {
-                return new SolutionResult(true, false, root.GetActionsChain());
+                return new SearchResult(true, false, root.GetActionsChain());
             }
 
             var stack = new Stack<Node>();
@@ -26,13 +26,13 @@ namespace UninformedSearch.Task.Logic
                 if (node.GetDepth() > maxDepth)
                 {
                     // result is unknown
-                    // as maximal level of depth is low
-                    return new SolutionResult(null, true);
+                    // as maximal level of depth is too low
+                    return new SearchResult(null, true);
                 }
 
                 if (problem.IsGoalState(node.State))
                 {
-                    return new SolutionResult(true, false, node.GetActionsChain(), node.State);
+                    return new SearchResult(true, false, node.GetActionsChain(), node.State);
                 }
 
                 foreach (var nextNode in NodeExpander.Expand(node, problem))
@@ -40,15 +40,15 @@ namespace UninformedSearch.Task.Logic
                     if (nextNode.GetDepth() <= maxDepth && problem.IsGoalState(nextNode.State))
                     {
                         // return result immediately
-                        return new SolutionResult(true, false, nextNode.GetActionsChain(), nextNode.State);
+                        return new SearchResult(true, false, nextNode.GetActionsChain(), nextNode.State);
                     }
 
                     stack.Push(nextNode);
                 }
             }
 
-            // FAILURE, solution was not found
-            return new SolutionResult(false, false);
+            // FAILURE, solution nodes were not found
+            return new SearchResult(false, false);
         }
     }
 }

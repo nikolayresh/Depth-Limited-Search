@@ -4,7 +4,7 @@ using UninformedSearch.Task.Logic;
 namespace UninformedSearch.Task
 {
     /// <summary>
-    /// State of the board with balls on it
+    /// State of the board with a set of balls on it
     /// </summary>
     public sealed class BoardState
     {
