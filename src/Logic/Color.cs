@@ -1,4 +1,4 @@
-﻿namespace UninformedSearch.Task
+﻿namespace UninformedSearch.Task.Logic
 {
     /// <summary>
     /// Color of a ball on the board

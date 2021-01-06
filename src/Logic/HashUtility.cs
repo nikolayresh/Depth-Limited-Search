@@ -3,12 +3,12 @@
     /// <summary>
     /// Utility that calculates hash code of specified items
     /// </summary>
-    public static class HashUtility
+    internal static class HashUtility
     {
         private const int SeedPrime = 17;
         private const int NextPrime = 41;
 
-        public static int GetHashCode(params object[] items)
+        internal static int GetHashCode(params object[] items)
         {
             unchecked
             {

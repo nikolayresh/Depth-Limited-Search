@@ -2,6 +2,9 @@
 
 namespace UninformedSearch.Task.Logic
 {
+    /// <summary>
+    /// Class that defines algorithm of Depth-Limited Search
+    /// </summary>
     public static class SearchDLS
     {
         /// <summary>

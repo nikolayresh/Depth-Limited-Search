@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace UninformedSearch.Task
+namespace UninformedSearch.Task.Logic
 {
     [DebuggerDisplay("{DebugText,nq}")]
     public sealed class Slot

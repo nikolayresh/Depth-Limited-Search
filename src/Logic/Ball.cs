@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
-using UninformedSearch.Task.Logic;
 
-namespace UninformedSearch.Task
+namespace UninformedSearch.Task.Logic
 {
     [DebuggerDisplay("{DebugText,nq}")]
     public sealed class Ball
@@ -59,7 +58,7 @@ namespace UninformedSearch.Task
         }
 
         /// <summary>
-        /// Creates a clone object
+        /// Creates a clone of this ball
         /// </summary>
         public Ball Clone()
         {

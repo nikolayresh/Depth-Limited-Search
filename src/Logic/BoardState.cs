@@ -1,7 +1,6 @@
 ﻿using System.Text;
-using UninformedSearch.Task.Logic;
 
-namespace UninformedSearch.Task
+namespace UninformedSearch.Task.Logic
 {
     /// <summary>
     /// State of the board with a set of balls on it
