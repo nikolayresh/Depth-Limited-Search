@@ -58,8 +58,8 @@ namespace UninformedSearch.Task.Logic
         /// </summary>
         public ReadOnlyCollection<Action> GetActionsChain()
         {
-            var chain = new List<Action>();
-            var current = this;
+            List<Action> chain = new List<Action>();
+            Node current = this;
 
             while (true)
             {

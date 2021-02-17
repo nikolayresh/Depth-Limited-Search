@@ -38,7 +38,7 @@ namespace UninformedSearch.Task.Logic
                     return new SearchResult(true, false, node.GetActionsChain(), node.State);
                 }
 
-                foreach (var nextNode in NodeExpander.Expand(node, problem))
+                foreach (Node nextNode in NodeExpander.Expand(node, problem))
                 {
                     if (nextNode.GetDepth() <= maxDepth && problem.IsGoalState(nextNode.State))
                     {
